@@ -40,9 +40,30 @@ portfolio/
     └── js/
 ```
 
-## Customization
+## SEO & Blog
 
-Log in to the admin panel and edit:
+The site is optimized for search engines (e.g. searching **Jafor Sadak**):
+
+- **Meta tags** — title, description, keywords, Open Graph, Twitter cards
+- **JSON-LD** — Person + WebSite schema on homepage, BlogPosting on each article
+- **Sitemap** — http://localhost:3000/sitemap.xml
+- **Robots** — http://localhost:3000/robots.txt
+- **Blog** — http://localhost:3000/blog (each post at `/blog/your-slug`)
+
+### After deploying to a real domain
+
+1. Admin → **SEO Settings** → set your **Site URL** (e.g. `https://jaforsadak.dev`)
+2. Add **Google Search Console** verification code in SEO tab
+3. Submit sitemap: `https://yourdomain.com/sitemap.xml`
+4. Write blog posts mentioning your name — helps Google index "Jafor Sadak"
+
+### Admin tabs
+
+| Tab | Purpose |
+|-----|---------|
+| **Blogs** | Add/edit posts with slug, content, and per-post SEO |
+| **SEO Settings** | Global title, description, keywords, site URL |
+
 
 - **Profile** — Name, title, bio, links, availability
 - **Stats** — Key metrics shown in the hero

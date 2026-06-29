@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body>
+  <div id="login-screen" class="login-screen">
+    <div class="login-card">
+      <h1>Admin Login</h1>
+      <p class="login-sub">Manage all portfolio content</p>
+      <form id="login-form">
+        <label>Username<input type="text" id="login-username" autocomplete="username" required /></label>
+        <label>Password<input type="password" id="login-password" autocomplete="current-password" required /></label>
+        <p class="login-error" id="login-error"></p>
+        <button type="submit" class="btn btn-primary">Sign in</button>
+      </form>
+      <a href="/" class="back-link">← Back to site</a>
+    </div>
+  </div>
+
+  <div id="dashboard" class="dashboard hidden">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2>Portfolio Admin</h2>
+        <a href="/" target="_blank">View site ↗</a>
+      </div>
+      <nav class="sidebar-nav">
+        <button class="nav-item active" data-tab="site">Site Labels</button>
+        <button class="nav-item" data-tab="profile">Profile</button>
+        <button class="nav-item" data-tab="stats">Stats</button>
+        <button class="nav-item" data-tab="experience">Experience</button>
+        <button class="nav-item" data-tab="projects">Projects</button>
+        <button class="nav-item" data-tab="research">Research</button>
+        <button class="nav-item" data-tab="tutorials">Tutorials</button>
+        <button class="nav-item" data-tab="skills">Skills</button>
+        <button class="nav-item" data-tab="blogs">Blogs</button>
+        <button class="nav-item" data-tab="seo">SEO</button>
+        <button class="nav-item" data-tab="contact">Contact</button>
+      </nav>
+      <button id="logout-btn" class="btn btn-ghost sidebar-logout">Logout</button>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-header">
+        <h1 id="tab-title">Site Labels</h1>
+        <button id="save-btn" class="btn btn-primary">Save changes</button>
+      </header>
+      <div id="save-status" class="save-status"></div>
+
+      <!-- Site Labels -->
+      <section class="tab-panel active" id="tab-site">
+        <p class="tab-desc">Edit every label, button, and heading shown on the public site.</p>
+        <div class="form-grid">
+          <label>Page title suffix<input type="text" id="s-pageTitleSuffix" /></label>
+          <label>Nav logo text<input type="text" id="s-navLogo" /></label>
+          <label>Hero greeting<input type="text" id="s-heroGreeting" /></label>
+          <label>Status: available<input type="text" id="s-statusAvailable" /></label>
+          <label>Status: unavailable<input type="text" id="s-statusUnavailable" /></label>
+          <label>Primary button<input type="text" id="s-heroBtnPrimary" /></label>
+          <label>Secondary button<input type="text" id="s-heroBtnSecondary" /></label>
+          <label>Experience label<input type="text" id="s-experienceLabel" /></label>
+          <label>Experience title<input type="text" id="s-experienceTitle" /></label>
+          <label>Projects label<input type="text" id="s-projectsLabel" /></label>
+          <label>Projects title<input type="text" id="s-projectsTitle" /></label>
+          <label>Research label<input type="text" id="s-researchLabel" /></label>
+          <label>Research title<input type="text" id="s-researchTitle" /></label>
+          <label>Research read button<input type="text" id="s-researchReadBtn" /></label>
+          <label>Tutorials label<input type="text" id="s-tutorialsLabel" /></label>
+          <label>Tutorials title<input type="text" id="s-tutorialsTitle" /></label>
+          <label>Tutorial watch button<input type="text" id="s-tutorialWatchBtn" /></label>
+          <label>Blog label<input type="text" id="s-blogLabel" /></label>
+          <label>Blog title<input type="text" id="s-blogTitle" /></label>
+          <label class="full">Blog description<textarea id="s-blogDescription" rows="2"></textarea></label>
+          <label>Blog read button<input type="text" id="s-blogReadBtn" /></label>
+          <label>Blog view all button<input type="text" id="s-blogViewAllBtn" /></label>
+          <label>Skills label<input type="text" id="s-skillsLabel" /></label>
+          <label>Skills title<input type="text" id="s-skillsTitle" /></label>
+          <label>Project stars prefix<input type="text" id="s-projectStarsPrefix" /></label>
+          <label>Project forks suffix<input type="text" id="s-projectForksSuffix" /></label>
+          <label>Contact email button<input type="text" id="s-contactEmailBtn" /></label>
+          <label>GitHub link label<input type="text" id="s-githubLabel" /></label>
+          <label>LinkedIn link label<input type="text" id="s-linkedinLabel" /></label>
+          <label class="full">Footer text<input type="text" id="s-footerText" /></label>
+          <label>Footer admin link<input type="text" id="s-footerAdminLink" /></label>
+        </div>
+        <h3 class="subsection-title">Navigation links</h3>
+        <div id="nav-links-editor"></div>
+        <button type="button" class="btn btn-ghost add-btn" id="add-nav-link">+ Add nav link</button>
+      </section>
+
+      <!-- Profile -->
+      <section class="tab-panel" id="tab-profile">
+        <div class="photo-upload">
+          <img id="photo-preview" src="" alt="Preview" class="photo-preview" />
+          <div>
+            <label class="btn btn-ghost upload-btn">
+              Upload new photo
+              <input type="file" id="photo-input" accept="image/*" hidden />
+            </label>
+            <label class="full" style="margin-top:1rem">Photo URL<input type="text" id="f-photo" /></label>
+          </div>
+        </div>
+        <div class="form-grid">
+          <label>Full name<input type="text" id="f-name" /></label>
+          <label>Title<input type="text" id="f-title" /></label>
+          <label class="full">Tagline<input type="text" id="f-tagline" /></label>
+          <label class="full">Bio<textarea id="f-bio" rows="3"></textarea></label>
+          <label>Location<input type="text" id="f-location" /></label>
+          <label>Remote status<input type="text" id="f-remote" /></label>
+          <label>Email<input type="email" id="f-email" /></label>
+          <label>GitHub URL<input type="url" id="f-github" /></label>
+          <label>LinkedIn URL<input type="url" id="f-linkedin" /></label>
+          <label class="checkbox-label"><input type="checkbox" id="f-available" /> Available for hire</label>
+        </div>
+      </section>
+
+      <!-- Stats -->
+      <section class="tab-panel" id="tab-stats">
+        <div id="stats-editor"></div>
+        <button type="button" class="btn btn-ghost add-btn" id="add-stat">+ Add stat</button>
+      </section>
+
+      <!-- Experience -->
+      <section class="tab-panel" id="tab-experience">
+        <div id="experience-editor"></div>
+        <button type="button" class="btn btn-ghost add-btn" id="add-experience">+ Add experience</button>
+      </section>
+
+      <!-- Projects -->
+      <section class="tab-panel" id="tab-projects">
+        <div id="projects-editor"></div>
+        <button type="button" class="btn btn-ghost add-btn" id="add-project">+ Add project</button>
+      </section>
+
+      <!-- Research -->
+      <section class="tab-panel" id="tab-research">
+        <div id="research-editor"></div>
+        <button type="button" class="btn btn-ghost add-btn" id="add-research">+ Add research</button>
+      </section>
+
+      <!-- Tutorials -->
+      <section class="tab-panel" id="tab-tutorials">
+        <div id="tutorials-editor"></div>
+        <button type="button" class="btn btn-ghost add-btn" id="add-tutorial">+ Add tutorial</button>
+      </section>
+
+      <!-- Skills -->
+      <section class="tab-panel" id="tab-skills">
+        <div id="skills-editor"></div>
+        <button type="button" class="btn btn-ghost add-btn" id="add-skill">+ Add skill category</button>
+      </section>
+
+      <!-- Blogs -->
+      <section class="tab-panel" id="tab-blogs">
+        <p class="tab-desc">Static blog posts with individual SEO. Each post gets its own URL at /blog/your-slug</p>
+        <div id="blogs-editor"></div>
+        <button type="button" class="btn btn-ghost add-btn" id="add-blog">+ Add blog post</button>
+      </section>
+
+      <!-- SEO -->
+      <section class="tab-panel" id="tab-seo">
+        <p class="tab-desc">Global SEO settings for Google search. Use your real domain in Site URL when deployed.</p>
+        <div class="form-grid">
+          <label class="full">Site URL (canonical domain)<input type="url" id="seo-siteUrl" placeholder="https://jaforsadak.dev" /></label>
+          <label class="full">Page title<input type="text" id="seo-title" placeholder="Jafor Sadak | Software Developer" /></label>
+          <label class="full">Meta description<textarea id="seo-description" rows="3"></textarea></label>
+          <label class="full">Meta keywords (comma-separated)<textarea id="seo-keywords" rows="2"></textarea></label>
+          <label>OG image path<input type="text" id="seo-ogImage" placeholder="/images/profile.jpg" /></label>
+          <label>Google verification code<input type="text" id="seo-googleSiteVerification" placeholder="Optional" /></label>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section class="tab-panel" id="tab-contact">
+        <div class="form-grid">
+          <label class="full">Headline<input type="text" id="f-contact-headline" /></label>
+          <label class="full">Subtext<textarea id="f-contact-subtext" rows="3"></textarea></label>
+          <label>Response time<input type="text" id="f-contact-response" /></label>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/js/admin.js"></script>
+</body>
+</html>
