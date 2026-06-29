@@ -19,12 +19,7 @@ npm start
 - Portfolio: http://localhost:3000
 - Admin: http://localhost:3000/admin.html
 
-## Admin credentials
 
-| Field    | Value           |
-|----------|-----------------|
-| Username | `admin`         |
-| Password | `portfolio2026` |
 
 ## Project structure
 
