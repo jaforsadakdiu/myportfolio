@@ -59,12 +59,12 @@
     "blogViewAllBtn": "View all posts"
   },
   "seo": {
-    "siteUrl": "https://jaforsadak.dev",
+    "siteUrl": "https://jaforsadak.com",
     "title": "Jafor Sadak | Software Developer & Programmer from Bangladesh",
     "description": "Official portfolio of Jafor Sadak (jaforsadak) — software developer, programmer, and computer science student from Bangladesh. Flutter, C++, Java, Python projects and open source on GitHub.",
     "keywords": "Jafor Sadak, jaforsadak, Jafor Sadak developer, Jafor Sadak programmer, Jafor Sadak Bangladesh, jaforsadakdiu, software developer Bangladesh, Flutter developer, programmer Dhaka",
     "ogImage": "/images/profile.jpg",
-    "googleSiteVerification": ""
+    "googleSiteVerification": "google50b40403e31440e0"
   },
   "profile": {
     "name": "Jafor Sadak",
@@ -197,9 +197,13 @@
       "authors": "Jafor Sadak",
       "year": "2025",
       "status": "In Progress",
-      "description": "Research on building an IoT monitoring system using sensors, embedded C++, and real-time data collection for environmental tracking.",
       "url": "",
-      "tags": ["IoT", "C++", "Embedded"]
+      "description": "Research on building an IoT monitoring system using sensors, embedded C++, and real-time data collection for environmental tracking.",
+      "tags": [
+        "IoT",
+        "C++",
+        "Embedded"
+      ]
     },
     {
       "id": "res-2",
@@ -207,38 +211,54 @@
       "authors": "Jafor Sadak",
       "year": "2025",
       "status": "Completed",
-      "description": "Academic project exploring tokenization, syntax analysis, and parse tree generation for a custom programming language.",
       "url": "https://github.com/jaforsadakdiu/compiler-design-project",
-      "tags": ["Compiler", "C", "Parsing"]
+      "description": "Academic project exploring tokenization, syntax analysis, and parse tree generation for a custom programming language.",
+      "tags": [
+        "Compiler",
+        "C",
+        "Parsing"
+      ]
     }
   ],
   "tutorials": [
     {
       "id": "tut-1",
       "title": "Flutter App Development Tutorial",
-      "description": "Step-by-step guide to building a cross-platform mobile app with Flutter and Dart from scratch.",
       "youtubeUrl": "https://www.youtube.com/watch?v=1gDhl4leEzA",
       "duration": "Full course",
       "date": "2025",
-      "tags": ["Flutter", "Dart", "Mobile"]
+      "description": "Step-by-step guide to building a cross-platform mobile app with Flutter and Dart from scratch.",
+      "tags": [
+        "Flutter",
+        "Dart",
+        "Mobile"
+      ]
     },
     {
       "id": "tut-2",
       "title": "Java Swing Inventory System",
-      "description": "Learn how to build a desktop inventory management application using Java Swing and MySQL.",
       "youtubeUrl": "https://www.youtube.com/watch?v=5_qtAf-M3f8",
       "duration": "Series",
       "date": "2025",
-      "tags": ["Java", "Swing", "Desktop"]
+      "description": "Learn how to build a desktop inventory management application using Java Swing and MySQL.",
+      "tags": [
+        "Java",
+        "Swing",
+        "Desktop"
+      ]
     },
     {
       "id": "tut-3",
       "title": "Data Structures & Algorithms in Python",
-      "description": "Practice DSA problems and learn core algorithms with Python implementations.",
       "youtubeUrl": "https://www.youtube.com/watch?v=pkYVOmU3MgA",
       "duration": "Playlist",
       "date": "2025",
-      "tags": ["Python", "DSA", "Algorithms"]
+      "description": "Practice DSA problems and learn core algorithms with Python implementations.",
+      "tags": [
+        "Python",
+        "DSA",
+        "Algorithms"
+      ]
     }
   ],
   "skills": [
@@ -278,13 +298,17 @@
       "id": "blog-1",
       "slug": "getting-started-with-flutter-development",
       "title": "Getting Started with Flutter Development",
-      "excerpt": "A beginner-friendly guide to building your first cross-platform mobile app with Flutter and Dart by Jafor Sadak.",
-      "content": "Flutter is one of the most popular frameworks for building cross-platform mobile applications. In this article, I'll walk through how I started learning Flutter and built my first app.\n\nWhy Flutter? Flutter lets you write one codebase and deploy to both Android and iOS. The hot reload feature makes development fast and enjoyable.\n\nSetting up your environment: Install the Flutter SDK, set up Android Studio or VS Code with the Flutter extension, and run flutter doctor to verify everything works.\n\nBuilding your first app: Start with a simple counter app, then move to layouts, navigation, and state management. My myflutter-app project on GitHub is a good reference.\n\nJafor Sadak — software developer from Bangladesh, passionate about mobile development and open source.",
       "author": "Jafor Sadak",
       "publishedAt": "2025-06-01",
       "updatedAt": "2025-06-01",
-      "tags": ["Flutter", "Dart", "Mobile"],
       "published": true,
+      "excerpt": "A beginner-friendly guide to building your first cross-platform mobile app with Flutter and Dart by Jafor Sadak.",
+      "content": "Flutter is one of the most popular frameworks for building cross-platform mobile applications. In this article, I'll walk through how I started learning Flutter and built my first app.\n\nWhy Flutter? Flutter lets you write one codebase and deploy to both Android and iOS. The hot reload feature makes development fast and enjoyable.\n\nSetting up your environment: Install the Flutter SDK, set up Android Studio or VS Code with the Flutter extension, and run flutter doctor to verify everything works.\n\nBuilding your first app: Start with a simple counter app, then move to layouts, navigation, and state management. My myflutter-app project on GitHub is a good reference.\n\nJafor Sadak — software developer from Bangladesh, passionate about mobile development and open source.",
+      "tags": [
+        "Flutter",
+        "Dart",
+        "Mobile"
+      ],
       "seo": {
         "title": "Getting Started with Flutter Development | Jafor Sadak",
         "description": "Learn Flutter mobile development with this beginner guide by Jafor Sadak. Setup, first app, and tips for cross-platform development.",
@@ -295,13 +319,17 @@
       "id": "blog-2",
       "slug": "my-journey-as-a-software-developer",
       "title": "My Journey as a Software Developer in Bangladesh",
-      "excerpt": "Jafor Sadak shares his path from learning to code in 2022 to building 16+ GitHub repositories in C++, Java, Python, and Flutter.",
-      "content": "My name is Jafor Sadak, and I'm a computer science student and software developer from Bangladesh. I started coding in 2022 and haven't looked back since.\n\nEarly days: I began with C and Java in university courses. Compiler design and data structures challenged me but taught me how computers really work under the hood.\n\nProjects that shaped me: From an OpenGL village renderer to a Java Swing inventory system, each project taught me something new. I publish everything on GitHub at github.com/jaforsadakdiu.\n\nWhat's next: I'm focused on full-stack development, mobile apps with Flutter, and contributing to open source. If you're searching for Jafor Sadak or jaforsadak online — welcome to my official portfolio.\n\nFeel free to reach out for collaborations, internships, or just to say hello.",
       "author": "Jafor Sadak",
       "publishedAt": "2025-05-15",
       "updatedAt": "2025-05-15",
-      "tags": ["Career", "Bangladesh", "Programming"],
       "published": true,
+      "excerpt": "Jafor Sadak shares his path from learning to code in 2022 to building 16+ GitHub repositories in C++, Java, Python, and Flutter.",
+      "content": "My name is Jafor Sadak, and I'm a computer science student and software developer from Bangladesh. I started coding in 2022 and haven't looked back since.\n\nEarly days: I began with C and Java in university courses. Compiler design and data structures challenged me but taught me how computers really work under the hood.\n\nProjects that shaped me: From an OpenGL village renderer to a Java Swing inventory system, each project taught me something new. I publish everything on GitHub at github.com/jaforsadakdiu.\n\nWhat's next: I'm focused on full-stack development, mobile apps with Flutter, and contributing to open source. If you're searching for Jafor Sadak or jaforsadak online — welcome to my official portfolio.\n\nFeel free to reach out for collaborations, internships, or just to say hello.",
+      "tags": [
+        "Career",
+        "Bangladesh",
+        "Programming"
+      ],
       "seo": {
         "title": "My Journey as a Software Developer | Jafor Sadak",
         "description": "Jafor Sadak — software developer from Bangladesh. My coding journey since 2022, university projects, GitHub repos, and goals.",
@@ -312,13 +340,17 @@
       "id": "blog-3",
       "slug": "understanding-compiler-design-basics",
       "title": "Understanding Compiler Design Basics",
-      "excerpt": "An overview of lexical analysis, parsing, and code generation from Jafor Sadak's compiler design university project.",
-      "content": "Compiler design is a fundamental topic in computer science. It teaches you how programming languages are translated into machine code.\n\nLexical analysis: The first phase breaks source code into tokens — keywords, identifiers, operators, and literals.\n\nSyntax analysis: Parsing builds a tree structure from tokens according to grammar rules. This is where you catch syntax errors.\n\nCode generation: The final phase produces target code, whether assembly or bytecode.\n\nMy compiler-design-project on GitHub implements these phases in C. It's a great learning exercise for anyone studying systems programming.\n\nWritten by Jafor Sadak — follow my work at jaforsadak.dev.",
       "author": "Jafor Sadak",
       "publishedAt": "2025-04-20",
       "updatedAt": "2025-04-20",
-      "tags": ["Compiler", "C", "Computer Science"],
       "published": true,
+      "excerpt": "An overview of lexical analysis, parsing, and code generation from Jafor Sadak's compiler design university project.",
+      "content": "Compiler design is a fundamental topic in computer science. It teaches you how programming languages are translated into machine code.\n\nLexical analysis: The first phase breaks source code into tokens — keywords, identifiers, operators, and literals.\n\nSyntax analysis: Parsing builds a tree structure from tokens according to grammar rules. This is where you catch syntax errors.\n\nCode generation: The final phase produces target code, whether assembly or bytecode.\n\nMy compiler-design-project on GitHub implements these phases in C. It's a great learning exercise for anyone studying systems programming.\n\nWritten by Jafor Sadak — follow my work at jaforsadak.dev.",
+      "tags": [
+        "Compiler",
+        "C",
+        "Computer Science"
+      ],
       "seo": {
         "title": "Compiler Design Basics Explained | Jafor Sadak",
         "description": "Learn compiler design fundamentals — lexical analysis, parsing, code generation. By Jafor Sadak, computer science student.",
