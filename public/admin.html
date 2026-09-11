@@ -39,6 +39,7 @@
         <button class="nav-item" data-tab="research">Research</button>
         <button class="nav-item" data-tab="tutorials">Tutorials</button>
         <button class="nav-item" data-tab="skills">Skills</button>
+        <button class="nav-item" data-tab="gallery">Gallery</button>
         <button class="nav-item" data-tab="blogs">Blogs</button>
         <button class="nav-item" data-tab="seo">SEO</button>
         <button class="nav-item" data-tab="contact">Contact</button>
@@ -81,6 +82,8 @@
           <label>Blog view all button<input type="text" id="s-blogViewAllBtn" /></label>
           <label>Skills label<input type="text" id="s-skillsLabel" /></label>
           <label>Skills title<input type="text" id="s-skillsTitle" /></label>
+          <label>Gallery label<input type="text" id="s-galleryLabel" /></label>
+          <label>Gallery title<input type="text" id="s-galleryTitle" /></label>
           <label>Project stars prefix<input type="text" id="s-projectStarsPrefix" /></label>
           <label>Project forks suffix<input type="text" id="s-projectForksSuffix" /></label>
           <label>Contact email button<input type="text" id="s-contactEmailBtn" /></label>
@@ -154,6 +157,13 @@
       <section class="tab-panel" id="tab-skills">
         <div id="skills-editor"></div>
         <button type="button" class="btn btn-ghost add-btn" id="add-skill">+ Add skill category</button>
+      </section>
+
+      <!-- Gallery -->
+      <section class="tab-panel" id="tab-gallery">
+        <p class="tab-desc">Manage photos and moments shown in the website gallery.</p>
+        <div id="gallery-editor"></div>
+        <button type="button" class="btn btn-ghost add-btn" id="add-gallery-item">+ Add photo</button>
       </section>
 
       <!-- Blogs -->
