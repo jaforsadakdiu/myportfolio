@@ -10,6 +10,7 @@ const TAB_TITLES = {
   research: 'Research',
   tutorials: 'Tutorials',
   skills: 'Skills',
+  gallery: 'Gallery',
   blogs: 'Blogs',
   seo: 'SEO Settings',
   contact: 'Contact'
@@ -21,7 +22,7 @@ const SITE_FIELDS = [
   'projectsLabel', 'projectsTitle', 'researchLabel', 'researchTitle', 'researchReadBtn',
   'tutorialsLabel', 'tutorialsTitle', 'tutorialWatchBtn',
   'blogLabel', 'blogTitle', 'blogDescription', 'blogReadBtn', 'blogViewAllBtn',
-  'skillsLabel', 'skillsTitle',
+  'skillsLabel', 'skillsTitle', 'galleryLabel', 'galleryTitle',
   'projectStarsPrefix', 'projectForksSuffix', 'contactEmailBtn',
   'githubLabel', 'linkedinLabel', 'footerText', 'footerAdminLink'
 ];
@@ -522,6 +523,50 @@ function collectSkills() {
   });
 }
 
+function renderGalleryEditor() {
+  if (!content.gallery) content.gallery = [];
+  const container = document.getElementById('gallery-editor');
+  if (!container) return;
+  container.innerHTML = content.gallery.map((item, i) => `
+    <div class="item-card" data-index="${i}">
+      <div class="item-card-header">
+        <h3>${esc(item.title || 'New Photo')}</h3>
+        <button type="button" class="btn btn-danger remove-gallery">Remove</button>
+      </div>
+      <div class="form-grid">
+        <label>Title<input type="text" class="gal-title" value="${esc(item.title)}" /></label>
+        <label>Category<input type="text" class="gal-category" value="${esc(item.category)}" placeholder="Professional, Travel" /></label>
+        <label class="full">Image Path<input type="text" class="gal-src" value="${esc(item.src)}" placeholder="/images/photo.jpg" /></label>
+        <label class="full">Caption<textarea class="gal-caption" rows="2">${esc(item.caption)}</textarea></label>
+      </div>
+    </div>
+  `).join('');
+
+  container.querySelectorAll('.remove-gallery').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = parseInt(btn.closest('.item-card').dataset.index, 10);
+      content.gallery.splice(idx, 1);
+      renderGalleryEditor();
+    });
+  });
+}
+
+function collectGallery() {
+  const container = document.getElementById('gallery-editor');
+  if (!container) return;
+  const cards = container.querySelectorAll('.item-card');
+  content.gallery = Array.from(cards).map((card, i) => {
+    const existing = content.gallery[i];
+    return {
+      id: existing?.id || uid('gal'),
+      title: card.querySelector('.gal-title').value.trim(),
+      category: card.querySelector('.gal-category').value.trim(),
+      src: card.querySelector('.gal-src').value.trim(),
+      caption: card.querySelector('.gal-caption').value.trim()
+    };
+  });
+}
+
 function populateContact() {
   const c = content.contact;
   document.getElementById('f-contact-headline').value = c.headline || '';
@@ -546,6 +591,7 @@ function populateAll() {
   renderResearchEditor();
   renderTutorialsEditor();
   renderSkillsEditor();
+  renderGalleryEditor();
   renderBlogsEditor();
   populateSeo();
   populateContact();
@@ -560,6 +606,7 @@ function collectAll() {
   collectResearch();
   collectTutorials();
   collectSkills();
+  collectGallery();
   collectBlogs();
   collectSeo();
   collectContact();
@@ -687,6 +734,21 @@ document.getElementById('add-skill').addEventListener('click', () => {
   content.skills.push({ id: uid('skill'), label: 'New category', value: 'Skill list' });
   renderSkillsEditor();
 });
+
+const addGalleryBtn = document.getElementById('add-gallery-item');
+if (addGalleryBtn) {
+  addGalleryBtn.addEventListener('click', () => {
+    if (!content.gallery) content.gallery = [];
+    content.gallery.unshift({
+      id: uid('gal'),
+      title: 'New Photo Title',
+      category: 'Professional',
+      src: '/images/profile.jpg',
+      caption: 'Photo description'
+    });
+    renderGalleryEditor();
+  });
+}
 
 document.getElementById('add-blog').addEventListener('click', () => {
   if (!content.blogs) content.blogs = [];
