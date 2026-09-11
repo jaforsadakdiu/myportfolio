@@ -70,6 +70,7 @@
               <img id="hero-photo" src="" alt="" class="hero-photo" />
             </div>
             <div class="photo-scanline"></div>
+            <div class="hero-photo-thumbs" id="hero-photo-thumbs" title="Switch Hero Photo"></div>
           </div>
           <div class="stats-panel">
             <div class="stats-grid" id="stats-grid"></div>
@@ -79,14 +80,16 @@
     </section>
 
     <section class="section reveal" id="experience">
-      <div class="section-header">
-        <span class="section-num">01</span>
-        <div>
-          <span class="section-label" id="exp-label"></span>
-          <h2 id="exp-title"></h2>
+      <div class="section-inner">
+        <div class="section-header">
+          <span class="section-num">01</span>
+          <div>
+            <span class="section-label" id="exp-label"></span>
+            <h2 id="exp-title"></h2>
+          </div>
         </div>
+        <div class="timeline" id="experience-list"></div>
       </div>
-      <div class="timeline" id="experience-list"></div>
     </section>
 
     <section class="section section-alt reveal" id="projects">
@@ -102,7 +105,7 @@
       </div>
     </section>
 
-    <section class="section section-alt reveal" id="research">
+    <section class="section reveal" id="research">
       <div class="section-inner">
         <div class="section-header">
           <span class="section-num">03</span>
@@ -115,18 +118,20 @@
       </div>
     </section>
 
-    <section class="section reveal" id="tutorials">
-      <div class="section-header">
-        <span class="section-num">04</span>
-        <div>
-          <span class="section-label" id="tutorials-label"></span>
-          <h2 id="tutorials-title"></h2>
+    <section class="section section-alt reveal" id="tutorials">
+      <div class="section-inner">
+        <div class="section-header">
+          <span class="section-num">04</span>
+          <div>
+            <span class="section-label" id="tutorials-label"></span>
+            <h2 id="tutorials-title"></h2>
+          </div>
         </div>
+        <div class="tutorials-grid" id="tutorials-grid"></div>
       </div>
-      <div class="tutorials-grid" id="tutorials-grid"></div>
     </section>
 
-    <section class="section section-alt reveal" id="skills">
+    <section class="section reveal" id="skills">
       <div class="section-inner">
         <div class="section-header">
           <span class="section-num">05</span>
@@ -139,32 +144,50 @@
       </div>
     </section>
 
-    <section class="section reveal" id="blog">
-      <div class="section-header">
-        <span class="section-num">06</span>
-        <div>
-          <span class="section-label" id="blog-label"></span>
-          <h2 id="blog-title"></h2>
+    <section class="section section-alt reveal" id="gallery">
+      <div class="section-inner">
+        <div class="section-header">
+          <span class="section-num">06</span>
+          <div>
+            <span class="section-label" id="gallery-label"></span>
+            <h2 id="gallery-title"></h2>
+          </div>
         </div>
+        <div class="gallery-filters" id="gallery-filters"></div>
+        <div class="gallery-grid" id="gallery-grid"></div>
       </div>
-      <p class="section-desc" id="blog-desc"></p>
-      <div class="blog-preview-grid" id="blog-preview-grid"></div>
-      <div class="blog-preview-action">
-        <a href="/blog" class="btn btn-primary" id="blog-view-all"></a>
+    </section>
+
+    <section class="section reveal" id="blog">
+      <div class="section-inner">
+        <div class="section-header">
+          <span class="section-num">07</span>
+          <div>
+            <span class="section-label" id="blog-label"></span>
+            <h2 id="blog-title"></h2>
+          </div>
+        </div>
+        <p class="section-desc" id="blog-desc"></p>
+        <div class="blog-preview-grid" id="blog-preview-grid"></div>
+        <div class="blog-preview-action">
+          <a href="/blog" class="btn btn-primary" id="blog-view-all"></a>
+        </div>
       </div>
     </section>
 
     <section class="section contact-section reveal" id="contact">
-      <div class="contact-card">
-        <div class="contact-glow"></div>
-        <span class="section-label contact-label">Contact</span>
-        <h2 id="contact-headline"></h2>
-        <p id="contact-subtext"></p>
-        <div class="contact-meta">
-          <span class="contact-badge" id="contact-response"></span>
-          <a href="#" class="btn btn-primary" id="contact-email"></a>
+      <div class="section-inner">
+        <div class="contact-card">
+          <div class="contact-glow"></div>
+          <span class="section-label contact-label">Contact</span>
+          <h2 id="contact-headline"></h2>
+          <p id="contact-subtext"></p>
+          <div class="contact-meta">
+            <span class="contact-badge" id="contact-response"></span>
+            <a href="#" class="btn btn-primary" id="contact-email"></a>
+          </div>
+          <div class="contact-links" id="contact-links"></div>
         </div>
-        <div class="contact-links" id="contact-links"></div>
       </div>
     </section>
   </main>
@@ -172,6 +195,24 @@
   <footer class="footer">
     <p><span id="footer-text"></span> · <a href="/admin.html" id="footer-admin"></a></p>
   </footer>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox-modal" aria-hidden="true">
+    <div class="lightbox-overlay" id="lightbox-overlay"></div>
+    <div class="lightbox-content">
+      <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Close modal">&times;</button>
+      <button type="button" class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous image">&#10094;</button>
+      <button type="button" class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next image">&#10095;</button>
+      <div class="lightbox-media-wrapper">
+        <img id="lightbox-img" src="" alt="" />
+      </div>
+      <div class="lightbox-details">
+        <span id="lightbox-category" class="tag"></span>
+        <h4 id="lightbox-title"></h4>
+        <p id="lightbox-caption"></p>
+      </div>
+    </div>
+  </div>
 
   <script src="/js/particles.js"></script>
   <script src="/js/app.js"></script>
