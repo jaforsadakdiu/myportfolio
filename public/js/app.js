@@ -10,6 +10,32 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
+function initMobileNav() {
+  const toggleBtn = document.getElementById('mobile-nav-toggle');
+  const navLinks = document.getElementById('nav-links');
+  if (!toggleBtn || !navLinks) return;
+
+  toggleBtn.onclick = (e) => {
+    e.stopPropagation();
+    navLinks.classList.toggle('mobile-open');
+    toggleBtn.classList.toggle('active');
+  };
+
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('mobile-open');
+      toggleBtn.classList.remove('active');
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!navLinks.contains(e.target) && !toggleBtn.contains(e.target)) {
+      navLinks.classList.remove('mobile-open');
+      toggleBtn.classList.remove('active');
+    }
+  });
+}
+
 function renderSite(data) {
   const { site, profile } = data;
   document.title = data.seo?.title || `${profile.name} — ${site.pageTitleSuffix || profile.title}`;
@@ -20,6 +46,8 @@ function renderSite(data) {
   navLinks.innerHTML = (site.navLinks || []).map(link =>
     `<a href="${escapeHtml(link.href)}">${escapeHtml(link.label)}</a>`
   ).join('');
+
+  initMobileNav();
 
   const statusEl = document.getElementById('nav-status');
   const statusText = profile.available ? site.statusAvailable : site.statusUnavailable;
