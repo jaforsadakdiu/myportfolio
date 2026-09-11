@@ -37,7 +37,7 @@ function renderSite(data) {
   document.getElementById('hero-btn-secondary').textContent = site.heroBtnSecondary;
 
   const photo = document.getElementById('hero-photo');
-  photo.src = profile.photo || '/images/profile.png';
+  photo.src = profile.photo || '/images/profile.jpg';
   photo.alt = profile.name;
 
   document.getElementById('exp-label').textContent = site.experienceLabel;
@@ -50,6 +50,11 @@ function renderSite(data) {
   document.getElementById('tutorials-title').textContent = site.tutorialsTitle;
   document.getElementById('skills-label').textContent = site.skillsLabel;
   document.getElementById('skills-title').textContent = site.skillsTitle;
+
+  const galleryLabel = document.getElementById('gallery-label');
+  if (galleryLabel) galleryLabel.textContent = site.galleryLabel || 'Gallery';
+  const galleryTitle = document.getElementById('gallery-title');
+  if (galleryTitle) galleryTitle.textContent = site.galleryTitle || 'Moments & Life Beyond Code';
 
   const blogLabel = document.getElementById('blog-label');
   if (blogLabel) blogLabel.textContent = site.blogLabel || 'Blog';
@@ -279,6 +284,150 @@ function renderContact(data) {
   links.innerHTML = linkItems.join('');
 }
 
+let currentGallery = [];
+let currentLightboxIndex = 0;
+
+function renderHeroThumbs(gallery, currentPhoto) {
+  const container = document.getElementById('hero-photo-thumbs');
+  if (!container || !gallery || !gallery.length) return;
+
+  container.innerHTML = gallery.map((item) => `
+    <button type="button" class="hero-thumb-btn ${item.src === currentPhoto ? 'active' : ''}" data-src="${escapeHtml(item.src)}" title="${escapeHtml(item.title)}">
+      <img src="${escapeHtml(item.src)}" alt="${escapeHtml(item.title)}" />
+    </button>
+  `).join('');
+
+  container.querySelectorAll('.hero-thumb-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const src = btn.dataset.src;
+      const photo = document.getElementById('hero-photo');
+      if (photo) {
+        photo.style.opacity = '0';
+        setTimeout(() => {
+          photo.src = src;
+          photo.style.opacity = '1';
+        }, 150);
+      }
+      container.querySelectorAll('.hero-thumb-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+}
+
+function renderGallery(gallery, site) {
+  currentGallery = gallery || [];
+  const filtersEl = document.getElementById('gallery-filters');
+  const gridEl = document.getElementById('gallery-grid');
+  if (!gridEl) return;
+
+  const categories = ['All', ...new Set(currentGallery.map(g => g.category).filter(Boolean))];
+  let activeCategory = 'All';
+
+  function updateDisplay() {
+    if (filtersEl) {
+      filtersEl.innerHTML = categories.map(cat => `
+        <button type="button" class="gallery-filter-btn ${cat === activeCategory ? 'active' : ''}" data-cat="${escapeHtml(cat)}">
+          ${escapeHtml(cat)}
+        </button>
+      `).join('');
+
+      filtersEl.querySelectorAll('.gallery-filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          activeCategory = btn.dataset.cat;
+          updateDisplay();
+        });
+      });
+    }
+
+    const filtered = activeCategory === 'All'
+      ? currentGallery
+      : currentGallery.filter(g => g.category === activeCategory);
+
+    gridEl.innerHTML = filtered.map((item) => {
+      const realIndex = currentGallery.findIndex(g => g.id === item.id);
+      return `
+        <article class="gallery-card" data-index="${realIndex}">
+          <div class="gallery-img-wrapper">
+            <img src="${escapeHtml(item.src)}" alt="${escapeHtml(item.title)}" loading="lazy" />
+            <div class="gallery-overlay">
+              <span class="gallery-category">${escapeHtml(item.category)}</span>
+              <h3 class="gallery-item-title">${escapeHtml(item.title)}</h3>
+              <p class="gallery-item-caption">${escapeHtml(item.caption || '')}</p>
+              <button type="button" class="gallery-zoom-btn" aria-label="Expand image">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </article>
+      `;
+    }).join('');
+
+    gridEl.querySelectorAll('.gallery-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const idx = parseInt(card.dataset.index, 10);
+        openLightbox(idx);
+      });
+    });
+  }
+
+  updateDisplay();
+  initLightbox();
+}
+
+function openLightbox(index) {
+  if (!currentGallery || !currentGallery.length) return;
+  currentLightboxIndex = (index + currentGallery.length) % currentGallery.length;
+  const item = currentGallery[currentLightboxIndex];
+
+  const modal = document.getElementById('lightbox');
+  const img = document.getElementById('lightbox-img');
+  const category = document.getElementById('lightbox-category');
+  const title = document.getElementById('lightbox-title');
+  const caption = document.getElementById('lightbox-caption');
+
+  if (img) img.src = item.src;
+  if (category) category.textContent = item.category || 'Photo';
+  if (title) title.textContent = item.title || '';
+  if (caption) caption.textContent = item.caption || '';
+
+  if (modal) {
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+  }
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  const modal = document.getElementById('lightbox');
+  if (modal) {
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+  }
+  document.body.style.overflow = '';
+}
+
+function initLightbox() {
+  const closeBtn = document.getElementById('lightbox-close');
+  const overlay = document.getElementById('lightbox-overlay');
+  const prevBtn = document.getElementById('lightbox-prev');
+  const nextBtn = document.getElementById('lightbox-next');
+
+  if (closeBtn) closeBtn.onclick = closeLightbox;
+  if (overlay) overlay.onclick = closeLightbox;
+  if (prevBtn) prevBtn.onclick = (e) => { e.stopPropagation(); openLightbox(currentLightboxIndex - 1); };
+  if (nextBtn) nextBtn.onclick = (e) => { e.stopPropagation(); openLightbox(currentLightboxIndex + 1); };
+
+  document.onkeydown = (e) => {
+    const modal = document.getElementById('lightbox');
+    if (!modal || !modal.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') openLightbox(currentLightboxIndex - 1);
+    if (e.key === 'ArrowRight') openLightbox(currentLightboxIndex + 1);
+  };
+}
+
 function initScrollReveal() {
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver(
@@ -299,12 +448,14 @@ async function init() {
   try {
     const data = await loadContent();
     renderSite(data);
+    renderHeroThumbs(data.gallery || [], data.profile?.photo);
     renderStats(data.stats);
     renderExperience(data.experience);
     renderProjects(data.projects, data.site);
     renderResearch(data.research || [], data.site);
     renderTutorials(data.tutorials || [], data.site);
     renderSkills(data.skills);
+    renderGallery(data.gallery || [], data.site);
     renderBlogPreview(data.blogs, data.site);
     renderContact(data);
     initScrollReveal();
