@@ -20,6 +20,10 @@
         "href": "#tutorials"
       },
       {
+        "label": "Gallery",
+        "href": "#gallery"
+      },
+      {
         "label": "Blog",
         "href": "/blog"
       },
@@ -45,6 +49,8 @@
     "researchReadBtn": "Read paper",
     "skillsLabel": "Skills",
     "skillsTitle": "Technologies I work with",
+    "galleryLabel": "Gallery",
+    "galleryTitle": "Moments & Life Beyond Code",
     "projectStarsPrefix": "★",
     "projectForksSuffix": "forks",
     "contactEmailBtn": "Send email",
@@ -356,6 +362,43 @@
         "description": "Learn compiler design fundamentals — lexical analysis, parsing, code generation. By Jafor Sadak, computer science student.",
         "keywords": "compiler design, Jafor Sadak, lexical analysis, parsing, C programming, jaforsadak"
       }
+    }
+  ],
+  "gallery": [
+    {
+      "id": "gal-1",
+      "title": "Executive Professional Portrait",
+      "category": "Professional",
+      "src": "/images/profile.jpg",
+      "caption": "Jafor Sadak — Software developer & Computer Science student"
+    },
+    {
+      "id": "gal-2",
+      "title": "Formal Blue Suit Pose",
+      "category": "Professional",
+      "src": "/images/profile-formal.jpg",
+      "caption": "Formal attire for academic presentations and tech conferences"
+    },
+    {
+      "id": "gal-3",
+      "title": "Mountain Valley Panorama",
+      "category": "Travel",
+      "src": "/images/mountain-view.jpg",
+      "caption": "Exploring breathtaking mountain ranges and outdoor trails"
+    },
+    {
+      "id": "gal-4",
+      "title": "Highland Peaks Selfie",
+      "category": "Travel",
+      "src": "/images/mountain-selfie.jpg",
+      "caption": "Capturing moments at mountain summits and scenic overlooks"
+    },
+    {
+      "id": "gal-5",
+      "title": "In-Flight Travel Selfie",
+      "category": "Travel",
+      "src": "/images/flight-selfie.jpg",
+      "caption": "On the move, traveling for events and tech pursuits"
     }
   ]
 }
